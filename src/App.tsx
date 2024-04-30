@@ -5,8 +5,10 @@ import Login from "./pages/auth/login";
 import Register from "./pages/auth/register";
 import Verify from "./pages/auth/verify";
 import Dashboard from "./pages/dashboard";
-import AuthProvider from "./providers/AuthProvider";
+import AuthProvider from "./providers/auth/AuthProvider";
 import { ROUTES } from "./constants/routes";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -21,6 +23,7 @@ function App() {
           </Routes>
         </AuthProvider>
       </BrowserRouter>
+      <ToastContainer />
     </div>
   );
 }

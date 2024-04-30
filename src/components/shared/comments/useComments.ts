@@ -9,9 +9,13 @@ interface ICommentData {
   event_id: number;
   user_id: number;
   created_at: string;
-  author_first_name: string;
-  author_last_name: string;
-  author_id: string;
+  updated_at: string;
+  user: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    id: number;
+  };
 }
 
 export const useComments = (id: string) => {
@@ -25,8 +29,7 @@ export const useComments = (id: string) => {
     try {
       setLoading(true);
       const { data } = await api.get(`${Endpoints.Event}/${id}/comments`);
-
-      setComments(data);
+      setComments(data.comments);
     } catch (e) {
     } finally {
       setLoading(false);

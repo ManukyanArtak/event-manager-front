@@ -11,6 +11,13 @@ import {
 } from "../../services/grphql/events/events";
 import api from "../../services/api/auth/axios";
 import { Endpoints } from "../../constants/endpoints";
+import { toast } from "react-toastify";
+import {
+  CREATED_SUCCESSFULLY,
+  DELETED_SUCCESSFULLY,
+  SOMETHING_WENT_WRONG,
+  UPDATED_SUCCESSFULLY,
+} from "../../constants/messages";
 
 export const useDashboard = () => {
   const [deleteId, setDeleteId] = useState<number | null>(null);
@@ -51,7 +58,9 @@ export const useDashboard = () => {
     try {
       await addEvent({ variables: values });
       await refetch();
+      toast.success(CREATED_SUCCESSFULLY);
     } catch (e) {
+      toast.error(SOMETHING_WENT_WRONG);
     } finally {
       setOpenCreateModal(false);
     }
@@ -62,7 +71,9 @@ export const useDashboard = () => {
       try {
         await updateEvent({ variables: { ...values, id: editId } });
         await refetch();
+        toast.success(UPDATED_SUCCESSFULLY);
       } catch (e) {
+        toast.error(SOMETHING_WENT_WRONG);
       } finally {
         setEditId(null);
       }
@@ -77,7 +88,9 @@ export const useDashboard = () => {
     try {
       await api.delete(`${Endpoints.Event}/${deleteId}`);
       refetch();
+      toast.success(DELETED_SUCCESSFULLY);
     } catch (e) {
+      toast.error(SOMETHING_WENT_WRONG);
     } finally {
       setDeleteId(null);
     }

@@ -23,6 +23,8 @@ import { isAxiosError } from "axios";
 import { ROUTES } from "../../../constants/routes";
 import api from "../../../services/api/auth/axios";
 import { Endpoints } from "../../../constants/endpoints";
+import { toast } from "react-toastify";
+import { SOMETHING_WENT_WRONG } from "../../../constants/messages";
 
 const initialValues: RegistrationData = {
   firstName: "",
@@ -54,6 +56,8 @@ export default function Register() {
         });
 
         setErrors(errors);
+      } else {
+        toast.error(SOMETHING_WENT_WRONG);
       }
     }
   };

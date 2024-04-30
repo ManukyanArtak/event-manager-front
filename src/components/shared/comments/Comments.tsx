@@ -57,8 +57,6 @@ export default function Comments({ open, handleClose, id }: ICommentProps) {
     handleKeyPress,
     userId,
   } = useComments(String(id));
-
-  console.log(comments,909);
   return (
     <Modal
       open={open}
@@ -91,7 +89,7 @@ export default function Comments({ open, handleClose, id }: ICommentProps) {
                 key={comment.id}
                 style={{
                   ...sx,
-                  ...(userId === String(comment.author_id)
+                  ...(userId === String(comment.user.id)
                     ? rightStyle
                     : leftStyle),
                 }}
@@ -100,7 +98,7 @@ export default function Comments({ open, handleClose, id }: ICommentProps) {
                   <Grid justifyContent="left" item xs zeroMinWidth>
                     <h4
                       style={{ margin: 0, textAlign: "left", color: "black" }}
-                    >{`${comment.author_first_name} ${comment.author_last_name}`}</h4>
+                    >{`${comment.user.firstName} ${comment.user.lastName}`}</h4>
                     <p style={{ textAlign: "left" }}>{comment.text}</p>
                   </Grid>
                 </Grid>

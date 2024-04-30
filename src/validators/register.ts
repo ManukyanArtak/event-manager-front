@@ -1,4 +1,5 @@
 import { ObjectSchema, ValidationError } from "yup";
+import { toast } from "react-toastify";
 
 type ValidationResult =
   | { isValid: true }
@@ -22,6 +23,7 @@ export const validateData = async <T>(
       });
       return { isValid: false, errors };
     } else {
+      toast.error("Something went wrong");
       throw error;
     }
   }

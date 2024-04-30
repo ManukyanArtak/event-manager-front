@@ -19,6 +19,8 @@ import { setStorage } from "../../../utils/storage";
 import { ROUTES } from "../../../constants/routes";
 import api from "../../../services/api/auth/axios";
 import { Endpoints } from "../../../constants/endpoints";
+import { toast } from "react-toastify";
+import { SOMETHING_WENT_WRONG } from "../../../constants/messages";
 
 const initialValues: LoginData = {
   email: "",
@@ -49,6 +51,8 @@ export default function Login() {
 
           setErrors(errors);
         }
+      } else {
+        toast.error(SOMETHING_WENT_WRONG);
       }
     }
   };

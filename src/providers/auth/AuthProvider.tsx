@@ -1,7 +1,7 @@
-import { getStorage } from "../utils/storage";
+import { getStorage } from "../../utils/storage";
 import { ReactNode, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { ROUTES } from "../constants/routes";
+import { ROUTES } from "../../constants/routes";
 
 const AuthProvider = ({ children }: { children: ReactNode }) => {
   const token = getStorage("accessToken");

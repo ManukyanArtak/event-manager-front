@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios  from "axios";
 import { getStorage, setStorage } from "../../../utils/storage";
 import { ROUTES } from "../../../constants/routes";
 
